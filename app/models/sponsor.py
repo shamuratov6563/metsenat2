@@ -27,8 +27,3 @@ class Sponsor(models.Model):
 
     def __str__(self):
         return self.full_name
-
-    def validate(self, data):
-        if data['payment_amount'] <data['spent_money']:
-            raise serializers.ValidationError('spent money can not be greater than payment amount')
-        return data
