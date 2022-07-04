@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from .serializers import StudentSerializer, SponsorSerializer, Student_sponsor, Student_sponsorSerializer
 from .models import Student, Sponsor
 from rest_framework.decorators import api_view
-
+from django_filters.rest_framework import DjangoFilterBackend
 from dateutil.rrule import rrule, MONTHLY
 from datetime import datetime
 
@@ -26,9 +26,9 @@ class ApplicationApi(APIView):
 class SponsorApi(ListAPIView):
     queryset =Sponsor.objects.all()
     serializer_class = SponsorSerializer
-    filter_backends = [filters.SearchFilter]
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ['full_name', 'id', 'data', 'phone_number', 'h_summa', 'organization_name', 'condition']
-    filter_fields = ['date',  'payment_amount', 'condition']
+    filterset_fields =  ['date',  'payment_amount', 'condition']
     # permission_classes = (IsAdminUser,)
 
 
@@ -48,9 +48,9 @@ class StudentAPIView(ListAPIView):
 
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    filter_backends = [filters.SearchFilter]
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ['full_name', 'id', 'degree', 'contract_sum', 'university', 'allocated_money']
-    filter_fields = ['degree', 'university']
+    filterset_fields = ['degree', 'university']
     # permission_classes = (IsAdminUser,)
 
 
