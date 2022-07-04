@@ -31,15 +31,6 @@ class SponsorApi(ListAPIView):
     filter_fields = ['date',  'payment_amount', 'condition']
     # permission_classes = (IsAdminUser,)
 
-    # def total_allocated_money(self, pk):
-    #     students = Student_sponsor.objects.all().filter(pk=pk)
-    #     print(students)
-    #     sum = 0
-    #     for i in students:
-    #         sum += i.spent_money
-    #     print(sum)
-    #     self.spent_money = sum
-
 
 class SponsorUpdateApi(RetrieveUpdateAPIView):
     queryset = Sponsor.objects.all()
