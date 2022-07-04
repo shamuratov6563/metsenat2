@@ -25,10 +25,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
+    'django_filters',
+
+    #app
     'app',
 ]
 
@@ -113,6 +117,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+
+# try:
+#     from local_settings import *
+# except ImportError:
+#     pass
 
 
 
